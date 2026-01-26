@@ -4,7 +4,8 @@ import {
     getAuth, 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
-    onAuthStateChanged 
+    onAuthStateChanged,
+    signOut
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -34,7 +35,9 @@ function getErrorMessage(errorCode) {
         case 'auth/user-not-found':
             return 'No account found with this email.';
         case 'auth/wrong-password':
-            return 'Incorrect password. Please try again.';
+        case 'auth/invalid-credential':
+        case 'auth/invalid-login-credentials':
+            return 'Incorrect email or password. Please try again.';
         case 'auth/too-many-requests':
             return 'Too many failed attempts. Please try again later.';
         case 'auth/network-request-failed':
@@ -88,9 +91,27 @@ if (loginForm) {
     });
 }
 
+// --- SIGN OUT LOGIC ---
+const signOutBtn = document.getElementById('signOutBtn');
+const signOutBtnMobile = document.getElementById('signOutBtnMobile');
+
+const handleSignOut = () => {
+    signOut(auth).then(() => {
+        window.showNotification('Signed out successfully', 'success');
+    }).catch((error) => {
+        window.showNotification('Error signing out', 'error');
+    });
+};
+
+if (signOutBtn) signOutBtn.addEventListener('click', handleSignOut);
+if (signOutBtnMobile) signOutBtnMobile.addEventListener('click', handleSignOut);
+
 // --- STATE OBSERVER ---
 onAuthStateChanged(auth, (user) => {
     const mainBtn = document.getElementById('createLinkBtn');
+    const signOutBtn = document.getElementById('signOutBtn');
+    const signOutBtnMobile = document.getElementById('signOutBtnMobile');
+
     if (user) {
         if(mainBtn) {
             mainBtn.innerText = "Go to Dashboard";
@@ -98,12 +119,16 @@ onAuthStateChanged(auth, (user) => {
                 window.location.href = 'create.html';
             };
         }
+        if(signOutBtn) signOutBtn.classList.remove('hidden');
+        if(signOutBtnMobile) signOutBtnMobile.classList.remove('hidden');
         console.log("Logged in as:", user.email);
     } else {
         if(mainBtn) {
             mainBtn.innerText = "Create Your Link";
             mainBtn.onclick = null;
         }
+        if(signOutBtn) signOutBtn.classList.add('hidden');
+        if(signOutBtnMobile) signOutBtnMobile.classList.add('hidden');
         console.log("User is signed out");
     }
 });
