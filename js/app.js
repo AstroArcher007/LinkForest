@@ -68,12 +68,7 @@ switchToSignup.addEventListener('click', () => {
     signupForm.style.display = 'block';
 });
 
-document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Form submission is disabled in demo mode!');
-    });
-});
+
 
 const header = document.querySelector('header');
 let lastScrollTop = 0;
