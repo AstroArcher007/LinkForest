@@ -8,19 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
-    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-opacity-80 dark:bg-black/80 light:bg-white/80">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <!-- Logo -->
                 <div class="flex items-center space-x-2">
                     <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                     </svg>
                     <span class="text-2xl font-bold">LinkForest</span>
                 </div>
-
-                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#" class="hover:text-green-500 transition">Contact Us</a>
                     <button class="theme-btn" id="themeToggle">
@@ -28,7 +24,6 @@
                     </button>
                 </div>
 
-                <!-- Mobile Hamburger -->
                 <div class="md:hidden flex items-center space-x-4">
                     <button class="theme-btn" id="themeToggleMobile">
                         <span class="theme-icon">☀️</span>
@@ -41,7 +36,6 @@
                 </div>
             </div>
 
-            <!-- Mobile Menu -->
             <div class="mobile-menu md:hidden" id="mobileMenu">
                 <div class="flex flex-col space-y-4 mt-4 pb-4">
                     <a href="#" class="hover:text-green-500 transition">Contact Us</a>
@@ -50,7 +44,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="container mx-auto px-6 py-20 text-center">
         <h1 class="text-5xl md:text-7xl font-bold mb-6">
             Everything you are,<br/>in <span class="text-green-500">one simple link</span>
@@ -63,7 +56,6 @@
         </button>
     </section>
 
-    <!-- How It Works Section -->
     <section class="container mx-auto px-6 py-16">
         <h2 class="text-4xl font-bold text-center mb-12">How It Works</h2>
         <div class="grid md:grid-cols-3 gap-8">
@@ -84,8 +76,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Why Us Section -->
+    
     <section class="container mx-auto px-6 py-16">
         <h2 class="text-4xl font-bold text-center mb-12">Why Choose Us</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -112,10 +103,9 @@
         </div>
     </section>
 
-    <!-- Auth Modal -->
     <div class="modal-overlay" id="authModal">
         <div class="auth-modal card p-8 rounded-2xl max-w-md w-full mx-4">
-            <!-- Sign Up Form -->
+
             <div id="signupForm">
                 <h2 class="text-3xl font-bold mb-6 text-center">Create Account</h2>
                 <form class="space-y-4">
@@ -141,7 +131,6 @@
                 </p>
             </div>
 
-            <!-- Login Form -->
             <div id="loginForm" style="display: none;">
                 <h2 class="text-3xl font-bold mb-6 text-center">Welcome Back</h2>
                 <form class="space-y-4">
@@ -163,7 +152,6 @@
                 </p>
             </div>
 
-            <!-- Close Button -->
             <button class="absolute top-4 right-4 text-2xl hover:text-green-500 transition" id="closeModal">
                 ×
             </button>
