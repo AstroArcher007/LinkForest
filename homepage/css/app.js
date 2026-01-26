@@ -1,4 +1,3 @@
-// Theme Toggle
 const body = document.body;
 const themeToggle = document.getElementById('themeToggle');
 const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -20,7 +19,6 @@ function toggleTheme() {
 themeToggle.addEventListener('click', toggleTheme);
 themeToggleMobile.addEventListener('click', toggleTheme);
 
-// Hamburger Menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -29,7 +27,6 @@ hamburger.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
 });
 
-// Auth Modal
 const authModal = document.getElementById('authModal');
 const createLinkBtn = document.getElementById('createLinkBtn');
 const closeModal = document.getElementById('closeModal');
@@ -64,7 +61,6 @@ switchToSignup.addEventListener('click', () => {
     signupForm.style.display = 'block';
 });
 
-// Prevent form submissions (for demo purposes)
 document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
