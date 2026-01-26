@@ -22,6 +22,7 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-6">
+                    <button class="text-sm font-medium hover:text-green-500 transition" onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html'">← Back</button>
                     <a href="contact.html" class="hover:text-green-500 transition">Contact Us</a>
                     <button class="hover:text-green-500 transition" id="signOutBtn">Sign Out</button>
                     <button class="theme-btn" id="themeToggle">
@@ -145,6 +146,6 @@
     <!-- Notification Area -->
     <div id="notificationArea" class="notification-area"></div>
 
-    <script type="module" src="js/create.js"></script>
+    <script type="module" src="css/create.js"></script>
 </body>
 </html>
