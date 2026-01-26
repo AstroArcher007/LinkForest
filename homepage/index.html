@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkForest - Your Links, One Place</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
     <header class="sticky top-0 z-50 backdrop-blur-lg bg-opacity-80">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
+                <!-- Logo -->
                 <div class="flex items-center space-x-2">
                     <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                     </svg>
                     <span class="text-2xl font-bold">LinkForest</span>
                 </div>
-
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#" class="hover:text-green-500 transition">Contact Us</a>
                     <div class="flex items-center space-x-2">
@@ -39,17 +39,13 @@
                     </div>
                 </div>
             </div>
-
             <div class="mobile-menu md:hidden" id="mobileMenu">
                 <div class="flex flex-col space-y-4 mt-4 pb-4">
-                    <a href="#" class="hover:text-green-500 transition">Login</a>
-                    <a href="#" class="hover:text-green-500 transition">Sign Up</a>
                     <a href="#" class="hover:text-green-500 transition">Contact Us</a>
                 </div>
             </div>
         </nav>
     </header>
-
     <section class="container mx-auto px-6 py-20 text-center">
         <h1 class="text-5xl md:text-7xl font-bold mb-6">
             Everything you are,<br/>in <span class="text-green-500">one simple link</span>
@@ -61,7 +57,6 @@
             Create Your Link
         </button>
     </section>
-
     <section class="container mx-auto px-6 py-16">
         <h2 class="text-4xl font-bold text-center mb-12">How It Works</h2>
         <div class="grid md:grid-cols-3 gap-8">
@@ -78,11 +73,10 @@
             <div class="card section-card p-8 rounded-2xl text-center">
                 <div class="text-5xl mb-4">🚀</div>
                 <h3 class="text-2xl font-bold mb-4 text-green-500">3. Share</h3>
-                <p class="opacity-80">Share your LinkTree everywhere and watch your audience grow.</p>
+                <p class="opacity-80">Share your LinkForest everywhere and watch your audience grow.</p>
             </div>
         </div>
     </section>
-
     <section class="container mx-auto px-6 py-16">
         <h2 class="text-4xl font-bold text-center mb-12">Why Choose Us</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -108,13 +102,11 @@
             </div>
         </div>
     </section>
-
     <footer class="container mx-auto px-6 py-12 mt-20 border-t border-gray-700">
         <div class="text-center opacity-60">
-            <p>&copy; 2024 LinkTree. All rights reserved.</p>
+            <p>&copy; 2024 LinkForest. All rights reserved.</p>
         </div>
     </footer>
-
     <div class="modal-overlay" id="authModal">
         <div class="auth-modal card p-8 rounded-2xl max-w-md w-full mx-4">
             <div id="signupForm">
@@ -141,7 +133,6 @@
                     <button class="text-green-500 hover:underline font-semibold" id="switchToLogin">Login here</button>
                 </p>
             </div>
-
             <div id="loginForm" style="display: none;">
                 <h2 class="text-3xl font-bold mb-6 text-center">Welcome Back</h2>
                 <form class="space-y-4">
@@ -162,14 +153,12 @@
                     <button class="text-green-500 hover:underline font-semibold" id="switchToSignup">Sign up here</button>
                 </p>
             </div>
-
             <button class="absolute top-4 right-4 text-2xl hover:text-green-500 transition" id="closeModal">
                 ×
             </button>
         </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
-
