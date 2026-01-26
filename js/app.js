@@ -1,4 +1,4 @@
-// Theme Toggle
+
 const body = document.body;
 const themeToggle = document.getElementById('themeToggle');
 const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -23,10 +23,9 @@ function toggleTheme() {
 themeToggle.addEventListener('click', toggleTheme);
 themeToggleMobile.addEventListener('click', toggleTheme);
 
-// Initialize theme icons
+
 updateThemeIcons();
 
-// Hamburger Menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -35,7 +34,6 @@ hamburger.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
 });
 
-// Auth Modal
 const authModal = document.getElementById('authModal');
 const createLinkBtn = document.getElementById('createLinkBtn');
 const closeModal = document.getElementById('closeModal');
@@ -70,7 +68,6 @@ switchToSignup.addEventListener('click', () => {
     signupForm.style.display = 'block';
 });
 
-// Prevent form submissions (for demo purposes)
 document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -78,15 +75,12 @@ document.querySelectorAll('form').forEach(form => {
     });
 });
 
-// Header Show on Scroll Up
 const header = document.querySelector('header');
 let lastScrollTop = 0;
 
-// Start with header hidden (moved up)
 header.style.transform = 'translateY(-100%)';
 header.style.transition = 'transform 0.3s ease-in-out';
 
-// Show header immediately on page load
 setTimeout(() => {
     header.style.transform = 'translateY(0)';
 }, 100);
@@ -95,10 +89,8 @@ window.addEventListener('scroll', () => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrollTop < lastScrollTop) {
-        // Scrolling up - show header
         header.style.transform = 'translateY(0)';
     } else if (scrollTop > 100) {
-        // Scrolling down & past 100px - hide header
         header.style.transform = 'translateY(-100%)';
     }
     
