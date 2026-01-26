@@ -1,4 +1,4 @@
-
+// Theme Toggle
 const body = document.body;
 const themeToggle = document.getElementById('themeToggle');
 const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -23,9 +23,10 @@ function toggleTheme() {
 themeToggle.addEventListener('click', toggleTheme);
 themeToggleMobile.addEventListener('click', toggleTheme);
 
-
+// Initialize theme icons
 updateThemeIcons();
 
+// Hamburger Menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -34,6 +35,7 @@ hamburger.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
 });
 
+// Auth Modal
 const authModal = document.getElementById('authModal');
 const createLinkBtn = document.getElementById('createLinkBtn');
 const closeModal = document.getElementById('closeModal');
@@ -68,14 +70,41 @@ switchToSignup.addEventListener('click', () => {
     signupForm.style.display = 'block';
 });
 
+// Notification System
+function showNotification(message, type = 'success') {
+    const notificationArea = document.getElementById('notificationArea');
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    
+    const icon = type === 'success' ? '✓' : '⚠';
+    notification.innerHTML = `
+        <span class="notification-icon">${icon}</span>
+        <span>${message}</span>
+    `;
+    
+    // Add to container
+    notificationArea.appendChild(notification);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
 
+// Make showNotification available globally
+window.showNotification = showNotification;
 
+// Header Show on Scroll Up
 const header = document.querySelector('header');
 let lastScrollTop = 0;
 
+// Start with header hidden (moved up)
 header.style.transform = 'translateY(-100%)';
 header.style.transition = 'transform 0.3s ease-in-out';
 
+// Show header immediately on page load
 setTimeout(() => {
     header.style.transform = 'translateY(0)';
 }, 100);
@@ -84,8 +113,10 @@ window.addEventListener('scroll', () => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrollTop < lastScrollTop) {
+        // Scrolling up - show header
         header.style.transform = 'translateY(0)';
     } else if (scrollTop > 100) {
+        // Scrolling down & past 100px - hide header
         header.style.transform = 'translateY(-100%)';
     }
     
