@@ -18,8 +18,31 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
 // Redefine the modal for the module's scope
 const authModal = document.getElementById('authModal');
+
+// Helper function to get user-friendly error messages
+function getErrorMessage(errorCode) {
+    switch (errorCode) {
+        case 'auth/email-already-in-use':
+            return 'This email is already registered. Please login instead.';
+        case 'auth/invalid-email':
+            return 'Please enter a valid email address.';
+        case 'auth/weak-password':
+            return 'Password should be at least 6 characters long.';
+        case 'auth/user-not-found':
+            return 'No account found with this email.';
+        case 'auth/wrong-password':
+            return 'Incorrect password. Please try again.';
+        case 'auth/too-many-requests':
+            return 'Too many failed attempts. Please try again later.';
+        case 'auth/network-request-failed':
+            return 'Network error. Please check your connection.';
+        default:
+            return 'An error occurred. Please try again.';
+    }
+}
 
 // --- SIGN UP LOGIC ---
 const signupForm = document.getElementById('signup-form-element');
@@ -31,10 +54,15 @@ if (signupForm) {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                authModal.classList.remove('active'); 
-                alert("Welcome to LinkForest!");
+                window.showNotification('Welcome to LinkForest! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'create.html';
+                }, 1500);
             })
-            .catch((error) => alert(error.message));
+            .catch((error) => {
+                const errorMessage = getErrorMessage(error.code);
+                window.showNotification(errorMessage, 'error');
+            });
     });
 }
 
@@ -48,10 +76,15 @@ if (loginForm) {
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                authModal.classList.remove('active');
-                alert("Logged in!");
+                window.showNotification('Login successful! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'create.html';
+                }, 1500);
             })
-            .catch((error) => alert(error.message));
+            .catch((error) => {
+                const errorMessage = getErrorMessage(error.code);
+                window.showNotification(errorMessage, 'error');
+            });
     });
 }
 
@@ -59,11 +92,18 @@ if (loginForm) {
 onAuthStateChanged(auth, (user) => {
     const mainBtn = document.getElementById('createLinkBtn');
     if (user) {
-        if(mainBtn) mainBtn.innerText = "Go to Dashboard";
+        if(mainBtn) {
+            mainBtn.innerText = "Go to Dashboard";
+            mainBtn.onclick = () => {
+                window.location.href = 'create.html';
+            };
+        }
         console.log("Logged in as:", user.email);
-        // You can add a redirect here later: window.location.href = 'dashboard.html';
     } else {
-        if(mainBtn) mainBtn.innerText = "Create Your Link";
+        if(mainBtn) {
+            mainBtn.innerText = "Create Your Link";
+            mainBtn.onclick = null;
+        }
         console.log("User is signed out");
     }
 });
