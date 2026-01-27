@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AlexCarter | LinkForest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/create.css">
+    <style>
+        /* 1. The Background (The space AROUND the phone screen) */
+        body {
+            background-color: #000000;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: flex-start; /* Start from top */
+            /* Add the subtle grid effect from the builder page */
+            background-image: 
+                linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* 2. The Container (The actual "Phone Screen") */
+        #leafContainer {
+            width: 100%;
+            max-width: 480px; /* Constrain width to look like mobile */
+            height: 100vh;    /* Full height */
+            
+            /* Give it a distinct look separate from the background */
+            background-color: #0a0a0a; 
+            border-left: 1px solid rgba(16, 185, 129, 0.15);
+            border-right: 1px solid rgba(16, 185, 129, 0.15);
+            box-shadow: 0 0 40px rgba(0,0,0,0.9);
+            
+            /* Ensure internal scrolling works properly */
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Optional: Hide scrollbar on desktop for a cleaner mobile look */
+        #leafContainer::-webkit-scrollbar { display: none; }
+        #leafContainer { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+    <div id="leafContainer"></div>
+
+    <script src="js/leaf-renderer.js"></script>
+
+    <script src="js/profile.js"></script>
+
+</body>
+</html>
