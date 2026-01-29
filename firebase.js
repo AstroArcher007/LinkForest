@@ -1,12 +1,19 @@
 // firebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { 
+    
     getAuth, 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { 
+    getFirestore, 
+    doc, 
+    setDoc, 
+    getDoc 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxMXV4agjCwvVwy3tC9bGD6zToiUKjtnc",
@@ -19,6 +26,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // Redefine the modal for the module's scope
 const authModal = document.getElementById('authModal');
@@ -56,7 +64,15 @@ if (signupForm) {
         const password = document.getElementById('signup-password').value;
 
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+
+        // Example: Create a document for the user in a 'users' collection
+        await setDoc(doc(db, "users", user.uid), {
+            email: user.email,
+            createdAt: new Date(),
+            links: [] 
+        });
                 window.showNotification('Welcome to LinkForest! Redirecting...', 'success');
                 setTimeout(() => {
                     window.location.href = 'create.html';
@@ -122,6 +138,7 @@ onAuthStateChanged(auth, (user) => {
         if(signOutBtn) signOutBtn.classList.remove('hidden');
         if(signOutBtnMobile) signOutBtnMobile.classList.remove('hidden');
         console.log("Logged in as:", user.email);
+      
     } else {
         if(mainBtn) {
             mainBtn.innerText = "Create Your Link";
